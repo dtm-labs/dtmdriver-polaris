@@ -41,8 +41,8 @@ func (p *polarisDriver) GetName() string {
 	return Name
 }
 
-// RegisterGrpcResolver grpc-go-polaris的init已完成注册
-func (p *polarisDriver) RegisterGrpcResolver() {}
+// RegisterAddrResolver grpc-go-polaris的init已完成注册
+func (p *polarisDriver) RegisterAddrResolver() {}
 
 func firstIp() net.IP {
 	ias, _ := net.InterfaceAddrs()
@@ -54,9 +54,9 @@ func firstIp() net.IP {
 	return nil
 }
 
-// RegisterGrpcService 向北极星注册dtm server服务
+// RegisterService 向北极星注册dtm server服务
 // target polaris://ip:port/service?namespace=[Test,Pre-release,Production]
-func (p *polarisDriver) RegisterGrpcService(target, token string) error {
+func (p *polarisDriver) RegisterService(target, token string) error {
 	var err error
 	// 主要考虑是dtmsvr的初始化，如果使用其他driver，polaris的consumer和provider不都应该初始化
 	if provider == nil {
